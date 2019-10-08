@@ -1,0 +1,19 @@
+#Copyright 2017 Rolando Muñoz
+
+procedure isIntervalEmpty: .tier, .tmin, .tmax
+  if .tmin = .tmax
+    exitScript: "tmin is equal to tmax"
+  elsif .tmax < .tmin
+    exitScript: "tmin is greater than tmax"
+  endif
+  .return = 0
+  .tmid = (.tmax + .tmin)*0.5
+  .interval = Get interval at time: .tier, .tmid
+  .interval_min = Get high interval at time: .tier, .tmin
+  .interval_max = Get low interval at time: .tier, .tmax
+  .text$ = Get label of interval: .tier, .interval
+  .interval_difference = .interval_max - .interval_min
+  if .text$ == "" and .interval_difference = 0
+    .return = 1
+  endif
+endproc

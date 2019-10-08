@@ -1,0 +1,10 @@
+#Copyright 2017 Rolando Muñoz
+
+procedure isPointEmpty: .tier, .time
+  .return = 0
+  .point = Get nearest index from time: .tier, .time
+  .point_time = Get time of point: .tier, .point
+  if .point_time != .time
+    .return = 1
+  endif
+endproc
